@@ -8,7 +8,7 @@ env:
 script:
   - echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - |
-    docker build --build-arg OPENJDK_TAG=$OPENJDK_TAG \
-                  --build-arg SBT_VERSION=$SBT_VERSION \
-                  -t $DOCKER_USERNAME/sbt${$OPENJDK_TAG}_${SBT_VERSION} .
-  - docker push $DOCKER_USERNAME/sbt${$OPENJDK_TAG}_${SBT_VERSION}
+    docker build --build-arg OPENJDK_TAG=${OPENJDK_TAG} \
+                  --build-arg SBT_VERSION=${SBT_VERSION} \
+                  -t ${DOCKER_USERNAME}/sbt${OPENJDK_TAG}-${SBT_VERSION} .
+  - docker push ${DOCKER_USERNAME}/sbt${OPENJDK_TAG}-${SBT_VERSION}
